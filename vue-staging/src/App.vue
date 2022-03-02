@@ -40,16 +40,20 @@
           }
         }
       },
-      //通知app去更新这个todo
-      updateTodo(id,done){
-        this.todos = this.todos.map((todo)=>{
-          if(id === todo.id){
-            return {...todo,done:done}//把原来所有的属性生成一个对象，但是修改done值，因为重名就写一个done就好，不然就是done:done
-          }
-          else{
-            return todo//不更新就丢出去
-          }
-        })
+      //通知app去更新这个todo----使用id
+      // updateTodo(id,done){
+      //   this.todos = this.todos.map((todo)=>{
+      //     if(id === todo.id){
+      //       return {...todo,done:done}//把原来所有的属性生成一个对象，但是修改done值，因为重名就写一个done就好，不然就是done:done
+      //     }
+      //     else{
+      //       return todo//不更新就丢出去
+      //     }
+      //   })
+      // }
+      //通知app去更新这个todo----使用index
+      updateTodo(idx,done){
+        this.todos[idx].done=done
       }
     }
   }

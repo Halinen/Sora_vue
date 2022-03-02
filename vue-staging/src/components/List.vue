@@ -1,7 +1,8 @@
 <template>
   <ul class="todo-main">
-        <ItemM v-for="t in todos" :key='t.id' :todo='t'
-        :updateTodo='updateTodo'/>
+        <ItemM v-for="(t,index) in todos" :key='t.id' :todo='t'
+        :updateTodo='updateTodo'
+        :index='index'/>
     </ul>
 </template>
 

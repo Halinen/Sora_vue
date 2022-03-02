@@ -3,7 +3,7 @@
         @mouseleave="isEnter = false"
         :class="{'high-light': isEnter}">
         <label>
-        <input type="checkbox" :checked='todo.done' @click="update(todo.id, $event)"/>
+        <input type="checkbox" :checked='todo.done' @click="update(index, $event)"/>
         <span>{{todo.name}}</span>
         </label>
         <button class="btn btn-danger" :style="{display:isEnter?'block':'none'}">删除</button>
@@ -18,11 +18,17 @@ export default {
         isEnter:false
       }
     },
-    props:['todo','updateTodo'],
+    props:['todo','updateTodo','index'],
     methods:{
-      update(id,ev){
+      //用id更新
+      // update(id,ev){
+      //   //console.log(ev.target.checked)
+      //   this.updateTodo(id, ev.target.checked)
+      // }
+      //用idx更新
+      update(idx,ev){
         //console.log(ev.target.checked)
-        this.updateTodo(id, ev.target.checked)
+        this.updateTodo(idx, ev.target.checked)
       }
     }
 }
