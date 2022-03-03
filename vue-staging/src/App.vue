@@ -3,8 +3,9 @@
   <div class="todo-container">
     <div class="todo-wrap">
       <HeaderR :addTodo="addTodo"/>
-      <ListT :todos="todos" :updateTodo="updateTodo"/>
-      <FooterR :cleanDone="cleanDone"/>
+      <ListT :todos="todos" :updateTodo="updateTodo"
+      :deleteItem = 'deleteItem'/>
+      <FooterR :todos="todos" :cleanDone="cleanDone"/>
     </div>
   </div>
 </div>
@@ -23,7 +24,6 @@
           {id:0,name:'aaa',done:true},
           {id:1,name:'bbb',done:false},
           {id:2,name:'ccc',done:true},
-
         ]
       }
     },
@@ -34,11 +34,9 @@
         this.todos.unshift(todoObj)
       },
       cleanDone(){
-        for(var t in this.todos){
-          if(t.done){
-            t.splice()
-          }
-        }
+        this.todos = this.todos.filter((todoObj)=>{
+          return todoObj.done === false
+        })
       },
       //通知app去更新这个todo----使用id
       // updateTodo(id,done){
@@ -54,6 +52,11 @@
       //通知app去更新这个todo----使用index
       updateTodo(idx,done){
         this.todos[idx].done=done
+      },
+      deleteItem(idx){
+        //在索引idx位置删除1个元素
+        this.todos.splice(idx,1)
+        console.log(idx)
       }
     }
   }

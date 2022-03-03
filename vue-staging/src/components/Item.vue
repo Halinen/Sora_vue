@@ -6,7 +6,10 @@
         <input type="checkbox" :checked='todo.done' @click="update(index, $event)"/>
         <span>{{todo.name}}</span>
         </label>
-        <button class="btn btn-danger" :style="{display:isEnter?'block':'none'}">删除</button>
+        <button class="btn btn-danger" 
+        :style="{display:isEnter?'block':'none'}"
+        @click="deleteI(index)"
+        >删除</button>
     </li>
 </template>
 
@@ -18,7 +21,7 @@ export default {
         isEnter:false
       }
     },
-    props:['todo','updateTodo','index'],
+    props:['todo','updateTodo','index','deleteItem'],
     methods:{
       //用id更新
       // update(id,ev){
@@ -29,6 +32,9 @@ export default {
       update(idx,ev){
         //console.log(ev.target.checked)
         this.updateTodo(idx, ev.target.checked)
+      },
+      deleteI(idx){
+        this.deleteItem(idx)
       }
     }
 }

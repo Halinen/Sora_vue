@@ -1,8 +1,9 @@
 <template>
   <ul class="todo-main">
         <ItemM v-for="(t,index) in todos" :key='t.id' :todo='t'
-        :updateTodo='updateTodo'
-        :index='index'/>
+        :updateTodo = 'updateTodo'
+        :deleteItem = 'deleteItem'
+        :index = 'index'/>
     </ul>
 </template>
 
@@ -11,7 +12,7 @@
 export default {
     name:'ListT',
     components:{ItemM},
-    props:['todos','updateTodo']
+    props:['todos','updateTodo','deleteItem']
 }
 </script>
 

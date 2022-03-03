@@ -1,10 +1,10 @@
 <template>
   <div class="todo-footer">
         <label>
-          <input type="checkbox"/>
+          <input type="checkbox" :checked="isAll"/>
         </label>
         <span>
-          <span>已完成0</span> / 全部2
+          <span>已完成{{getDone}}</span> / 全部{{todos.length}}
         </span>
         <button class="btn btn-danger" @click="clean">清除已完成任务</button>
     </div>
@@ -13,13 +13,27 @@
 <script>
 export default {
     name:'FooterR',
-    props:['cheanDone'],
+    data(){
+      return {
+      }
+    },
+    props:['cleanDone','todos'],
     methods:{
       clean(){
         //通知App清除已完成的
         this.cleanDone()
+      },
+    },
+    computed: {
+      getDone(){
+        return this.todos.reduce((pre,current)=>
+          pre += current.done?1:0 , 0
+        )
+      },
+      isAll(){
+        return this.getDone === this.todos.length && this.todos.length > 0
       }
-    }
+    },
 }
 </script>
 
