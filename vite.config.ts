@@ -5,6 +5,14 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue()],
   server: {
-    host: "0.0.0.0"
+    host: "0.0.0.0",
+    port: 10231,
+    proxy: {
+      "/api": {
+        target: "http://localhost:4563",
+        changeOrigin: true,
+        rewrite: path => path.replace(/^\/api/,"")
+      }
+    }
   },
 });
