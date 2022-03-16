@@ -1,7 +1,7 @@
 <script setup lang='ts'>
 import "../styles/auth.css"
 import LoginForm from "../components/auth/loginForm.vue";
-// import RegistForm from '../components/auth/registForm.vue'
+import RegistForm from '../components/auth/registForm.vue'
 import { authStatus } from "../store/auth.store";
 import AuthBg from "../components/auth/authBg.vue";
 
@@ -18,8 +18,8 @@ import AuthBg from "../components/auth/authBg.vue";
                     <Transition name="fade" mode="out-in">
                          <!-- v-if="authStatus.login.onShow" -->
                           <!-- v-else-if="authStatus.regist.onShow" -->
-                        <LoginForm></LoginForm>
-                        <!-- <RegistForm></RegistForm> -->
+                        <LoginForm v-if="authStatus.login.onShow"></LoginForm>
+                        <RegistForm v-else-if="authStatus.regist.onShow"></RegistForm>
                     </Transition>
                 </div>
             </div>

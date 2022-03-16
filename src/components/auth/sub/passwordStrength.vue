@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed } from "@vue/reactivity";
-import { passwordStrength } from "check-password-strength";
+// import { passwordStrength } from "check-password-strength";
 type Strength = {
     level: number;
     style: string;

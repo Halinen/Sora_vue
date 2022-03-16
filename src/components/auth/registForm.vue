@@ -2,19 +2,24 @@
 import { computed, reactive } from "@vue/reactivity";
 import { onMounted, watch } from "@vue/runtime-core";
 import { ref } from "vue";
-import {
-  Captcha,
-  checkCaptcha,
-  checkUsername,
-  getCAPTCHA,
-  RegistForm,
-  sendRegist,
-} from "../../api/auth/auth";
+// import {
+//   Captcha,
+//   checkCaptcha,
+//   checkUsername,
+//   getCAPTCHA,
+//   RegistForm,
+//   sendRegist,
+// } from "../../api/auth/auth";
 import { changeAuthComponent, authStatus } from "../../store/auth.store";
 import FormTitle from "./sub/formTitle.vue";
 import PasswordStrength from "./sub/passwordStrength.vue";
 import FormItem from "./sub/formItem.vue";
-import formChecker from "../../utils/form.util";
+// import formChecker from "../../utils/form.util";
+/** 组件传值相关 */
+export type FormItemValue = {
+  value: string;
+  logo: keyof RegistForm | string;
+};
 // 验证码相关
 let svgCaptcha: Captcha = reactive({
   id: "",
@@ -53,11 +58,7 @@ const regist = async () => {
     console.log("存在错误");
   }
 };
-/** 组件传值相关 */
-export type FormItemValue = {
-  value: string;
-  logo: keyof RegistForm | string;
-};
+
 const getValue = ({ value, logo }: FormItemValue) => {
   registForm[logo as keyof RegistForm] = value;
 };
